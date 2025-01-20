@@ -30,6 +30,9 @@
           <span class="nav-link-text ms-1">Dashboard</span>
         </a>
       </li>
+
+      {{-- Admin Panel (Hanya untuk Admin) --}}
+      @if(auth()->user()->role == 'Admin')
       <li class="nav-item mt-2">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Admin Panel</h6>
       </li>
@@ -62,6 +65,8 @@
             <span class="nav-link-text ms-1">User Management</span>
         </a>
       </li>
+      @endif
+
       <li class="nav-item mt-2">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Example pages</h6>
       </li>
