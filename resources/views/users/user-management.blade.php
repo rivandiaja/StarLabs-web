@@ -46,7 +46,7 @@
                                         </td>
                                         <td>
                                             <div>
-                                                <img src="{{ $user->photo }}" class="avatar avatar-sm me-3">
+                                                <img src="{{ auth()->user()->photo ? asset('storage/' . auth()->user()->photo) : '../assets/img/default-avatar.png' }}" class="avatar avatar-sm me-3">
                                             </div>
                                         </td>
                                         <td class="text-center">
@@ -62,16 +62,6 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at->format('d/m/y') }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <!-- Tombol View -->
-                                            <a href="{{ route('users.show', $user->id) }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">
-                                                <i class="fas fa-eye"></i>&nbsp; View
-                                            </a>
-
-                                            <!-- Tombol Edit -->
-                                            <a href="{{ route('users.edit', $user->id) }}" class="btn bg-gradient-info btn-sm mb-0" type="button">
-                                                <i class="fas fa-user-edit"></i>&nbsp; Edit
-                                            </a>
-
                                             <!-- Tombol Delete -->
                                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this user?')">
                                                 @csrf

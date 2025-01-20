@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('rtl');
 
     Route::get('user-management', function () {
-        return view('user-management.user-management');
+        return view('users.user-management');
     })->name('user-management');
 
     Route::get('tables', function () {
