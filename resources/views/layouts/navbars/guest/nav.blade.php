@@ -1,9 +1,17 @@
 <!-- Navbar -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap" rel="stylesheet">
 <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 my-3 {{ (Request::is('static-sign-up') ? 'w-100 shadow-none  navbar-transparent mt-4' : 'blur blur-rounded shadow py-2 start-0 end-0 mx4') }}">
-  <div class="container-fluid {{ (Request::is('static-sign-up') ? 'container' : 'container-fluid') }}">
-    <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 {{ (Request::is('static-sign-up') ? 'text-white' : '') }}" href="{{ url('dashboard') }}">
-      Soft UI Dashboard Laravel
-    </a>
+    <img src="{{ asset('assets/img/logos/logostarlabs.png') }}" alt="jmk" style="width: 50px; height: 50px;">
+    <div class="container-fluid {{ (Request::is('static-sign-up') ? 'container' : 'container-fluid') }}">
+
+        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 z-index-4 {{ (Request::is('static-sign-up') ? 'text-white' : '') }}"
+        href="{{ url('dashboard') }}"
+        style="font-family: 'Goldman', serif; font-weight: 400; font-size: 30px;">
+         STARLABS
+     </a>
+
     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon mt-2">
         <span class="navbar-toggler-bar bar1"></span>
