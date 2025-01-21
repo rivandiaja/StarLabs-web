@@ -62,6 +62,10 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at->format('d/m/y') }}</span>
                                         </td>
                                         <td class="text-center">
+                                            <!-- Tombol Edit -->
+                                            <a href="{{ route('users.edit', $user->id) }}" class="btn bg-gradient-info btn-sm mb-0">
+                                                <i class="fas fa-edit"></i>&nbsp; Edit
+                                            </a>
                                             <!-- Tombol Delete -->
                                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this user?')">
                                                 @csrf

@@ -64,6 +64,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user-management', [UserController::class, 'index'])->name('user-management');
 
     Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
+    // Route untuk menampilkan form edit user
+    Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+
+    // Route untuk memperbarui data user
+    Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
+
 });
 
 Route::group(['middleware' => 'guest'], function () {

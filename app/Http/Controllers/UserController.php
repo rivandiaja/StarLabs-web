@@ -49,7 +49,7 @@ class UserController extends Controller
         return redirect()->route('user-management')->with('success', 'User created successfully');
     }
 
-    public function edit($id)
+    /*public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
@@ -93,6 +93,7 @@ class UserController extends Controller
 
         return redirect()->route('user-management')->with('success', 'User updated successfully');
     }
+    */
 
     public function destroy($id)
     {
@@ -112,6 +113,39 @@ class UserController extends Controller
     {
     $user = User::findOrFail($id);
     return view('users.show', compact('user'));
+    }
+
+    public function edit(User $user)
+    {
+        return view('users.edit-user', compact('user'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'required|string|in:admin,user',
+            'photo' => 'nullable|image|max:2048',
+            'password' => 'nullable|min:8',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('photos', 'public');
+            $user->photo = $path;
+    }
+
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+    }
+
+        $user->save();
+
+        return redirect()->route('user-management')->with('success', 'User updated successfully.');
     }
 
 }
